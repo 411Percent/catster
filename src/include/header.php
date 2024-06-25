@@ -1,3 +1,34 @@
+<?php
+// Check if session is not already started and then start the session
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+include 'condb.php';
+
+// ตรวจสอบการเชื่อมต่อฐานข้อมูล
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$user_data = null;
+
+// Check if the username session variable is set
+if (isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
+    $sql = "SELECT * FROM members WHERE mem_username = '$username'";
+
+    // Execute the query and fetch the result
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        // Fetch the user data
+        $user_data = $result->fetch_assoc();
+    }
+}
+?>
+
+
 <div class="container-fluid px-0" style="background-color: #313131;">
     <div class="row gx-0">
         <div class="col-lg-3 d-none d-lg-block" style="background-color: #313131;">
@@ -49,10 +80,10 @@
                         </div>
                         <a href="contact.php" class="nav-item nav-link">ติดต่อ</a>
                     </div>
-                    <?php if (isset($_SESSION['username'])): ?>
+                    <?php if (isset($_SESSION['username']) && $user_data) : ?>
                         <div class="d-inline-flex align-items-center" onclick="toggleMenu()">
-                            <p class="nav-item nav-link mb-0">ยินดีต้อนรับ, <?php echo $_SESSION['username'] ?></p>
-                            <img src="images/mem-1.png" class="user-pic ms-2">
+                            <p class="nav-item nav-link mb-0">ยินดีต้อนรับ, <?php echo $_SESSION['username']; ?></p>
+                            <img src="images/<?php echo $user_data['mem_picture']; ?>" class="user-pic ms-2">
                         </div>
                         <div class="sub-menu-wrap" id="subMenu">
                             <div class="sub-menu">
@@ -80,7 +111,7 @@
                                 </a>
                             </div>
                         </div>
-                    <?php else: ?>
+                    <?php else : ?>
                         <a href="login.php" class="btn btn-primary rounded-0 py-4 px-md-5 d-none d-lg-block">เข้าสู่ระบบ / สมัครสมาชิก<i class="fa fa-arrow-right ms-3"></i></a>
                     <?php endif; ?>
                 </div>
