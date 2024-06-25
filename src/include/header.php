@@ -88,7 +88,7 @@ if (isset($_SESSION['username'])) {
                         <div class="sub-menu-wrap" id="subMenu">
                             <div class="sub-menu">
                                 <div class="user-info">
-                                    <img src="images/mem-1.png">
+                                    <img src="images/<?php echo $user_data['mem_picture']; ?>">
                                     <h6>ไอย์ พงษ์สถิตย์พัฒน์</h6>
                                 </div>
                                 <hr>
