@@ -39,6 +39,7 @@ if (isset($_SESSION['username'])) {
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <!-- My CSS -->
     <link rel="stylesheet" href="assets/css/admin_style.css">
+    <script src="https://kit.fontawesome.com/5f1b7c0a83.js" crossorigin="anonymous"></script>
 
     <title>AdminHub</title>
 </head>
@@ -120,7 +121,7 @@ if (isset($_SESSION['username'])) {
                 <span class="num">8</span>
             </a>
             <a href="#" class="profile">
-                <img src="images/<?php echo isset($user_data['emp_picture']) ? $user_data['emp_picture'] : 'default.png'; ?>">
+                <img src="images/<?php echo isset($user_data['emp_picture']) ? $user_data['emp_picture'] : 'noimage.png'; ?>">
             </a>
         </nav>
         <!-- NAVBAR -->
@@ -131,18 +132,12 @@ if (isset($_SESSION['username'])) {
                 <div class="left">
                     <h1>แก้ไขข้อมูลส่วนตัว</h1>
                 </div>
-                <a href="#" class="btn-download">
-                    <i class='bx bxs-cloud-download'></i>
-                    <span class="text">Download PDF</span>
-                </a>
             </div>
 
             <div class="table-data">
                 <div class="todo">
                     <div class="head">
-                        <h3>Todos</h3>
-                        <i class='bx bx-plus'></i>
-                        <i class='bx bx-filter'></i>
+                        <h3><?php echo isset($user_data['emp_firstname']) ? $user_data['emp_firstname'] : ''; ?> <?php echo isset($user_data['emp_lastname']) ? $user_data['emp_lastname'] : ''; ?></h3>
                     </div>
                     <div class="row">
                         <div class="col-md-3">
@@ -151,27 +146,73 @@ if (isset($_SESSION['username'])) {
                                 <form class="form-horizontal" role="form" action="update_emp.php" method="POST" enctype="multipart/form-data">
                                     <div class="avatar-upload">
                                         <div class="avatar-edit">
-                                            <input type='file' name="emp_picture" id="imageUpload" accept=".png, .jpg, .jpeg" />
+                                            <input type="file" name="emp_picture" id="imageUpload" accept=".png, .jpg, .jpeg" onchange="previewImage(this)" />
                                             <label for="imageUpload"><i class="fa-solid fa-gear" style="color: #fff;"></i></label>
-                                            <input type="hidden" name="current_picture" value="<?php echo isset($user_data['emp_picture']) ? $user_data['emp_picture'] : ''; ?>">
+                                            <input type="hidden" name="current_picture" value="<?php echo isset($user_data['emp_picture']) ? $user_data['emp_picture'] : 'default.png'; ?>">
                                         </div>
-
                                         <div class="avatar-preview">
                                             <div id="imagePreview" style="background-image: url('images/<?php echo isset($user_data['emp_picture']) ? $user_data['emp_picture'] : 'default.png'; ?>');">
                                             </div>
                                         </div>
                                     </div>
                                     <!-- End Avatar Upload -->
+
+                                    <h4 style="margin-top: 50px;">User Info</h4>
+                                    <input type="text" name="emp_username" value="<?php echo isset($user_data['emp_username']) ? $user_data['emp_username'] : ''; ?>" style="margin-top: 5px; background-color: #FFA559; color: #fff;" readonly>
+                                    <input type="text" name="emp_firstname" value="<?php echo isset($user_data['emp_firstname']) ? $user_data['emp_firstname'] : ''; ?>" style="margin-top: 5px;">
+                                    <input type="text" name="emp_lastname" value="<?php echo isset($user_data['emp_lastname']) ? $user_data['emp_lastname'] : ''; ?>" style="margin-top: 5px;">
+                                    <input type="email" name="emp_email" value="<?php echo isset($user_data['emp_email']) ? $user_data['emp_email'] : ''; ?>" style="margin-top: 5px;">
+                                    <input type="text" name="emp_tel" value="<?php echo isset($user_data['emp_tel']) ? $user_data['emp_tel'] : ''; ?>" style="margin-top: 5px;">
+                                    <textarea rows="4" name="emp_address"><?php echo isset($user_data['emp_address']) ? $user_data['emp_address'] : ''; ?></textarea>
+
+                                    <h4 style="margin-top: 50px;">Change Password</h4>
+                                    <input type="hidden" name="emp_password">
+                                    <input type="password" name="oldPassword" style="margin-top: 5px;" placeholder="Old Password">
+                                    <input type="password" name="newPassword" style="margin-top: 5px;" placeholder="New Password">
+                                    <input type="password" name="cfPassword" style="margin-top: 5px;" placeholder="Confirm Password">
+
+                                    <button type="submit" class="button-two"> SUBMIT </button>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </main>
         <!-- MAIN -->
     </section>
     <!-- CONTENT -->
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        function previewImage(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#imagePreview').css('background-image', 'url(' + e.target.result + ')');
+                    $('#imagePreview').hide();
+                    $('#imagePreview').fadeIn(650);
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        $("#imageUpload").change(function() {
+            previewImage(this);
+        });
+    </script>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <script src="assets/js/script_admin.js"></script>
 </body>
@@ -286,14 +327,16 @@ if (isset($_SESSION['username'])) {
     }
 
     .form-horizontal {
-        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* Center the form elements horizontally */
         max-width: 100%;
-        /* กำหนดความกว้างสูงสุดของแบบฟอร์ม */
+        /* Define the maximum width of the form */
         margin: 0 auto;
-        /* ทำให้อยู่ตรงกลาง */
+        /* Center the form within its parent container */
         padding: 20px;
-        /* เพิ่ม padding เพื่อให้มีขอบที่สวยงาม */
-
+        /* Add padding for visual spacing */
     }
 
     @media (max-width: 768px) {
@@ -309,5 +352,71 @@ if (isset($_SESSION['username'])) {
 
     .form-group {
         margin-bottom: 10px;
+    }
+
+    input,
+    select,
+    textarea {
+        margin-bottom: 10px;
+        width: 40%;
+        height: 40px;
+        font-size: 16px;
+        transition: border-bottom 0.6s;
+        /* Added transition for consistency */
+        border: 1px solid #CCC;
+        /* Added default border for consistency */
+        background-color: transparent;
+        border-radius: 4px;
+        /* Added border-radius for consistency */
+        padding: 8px;
+        /* Added padding for consistency */
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+        outline: none;
+        border-color: #FFA559;
+        border-bottom: 1px solid #FFA559;
+        /* Adjusted to match input field behavior */
+    }
+
+    .button-two {
+        border-radius: 4px;
+        background-color: #FFA559;
+        font-size: 18px;
+        border: none;
+        padding: 10px;
+        width: 200px;
+        transition: all 0.5s;
+    }
+
+    .button-two span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+    }
+
+    .button-two span:after {
+        content: '»';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+    }
+
+    .button-two:hover span {
+        padding-right: 25px;
+    }
+
+    .button-two:hover span:after {
+        opacity: 1;
+        right: 0;
+    }
+
+    .row {
+        justify-content: center;
     }
 </style>
