@@ -14,7 +14,7 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">  
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -68,9 +68,6 @@
         <div class="container-xxl py-5">
             <div class="container">
                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="d-flex justify-content-end">
-                        <a class="btn btn-primary py-3 px-5 mt-4" href="report.php">แจ้งพบแมวจร</a>
-                    </div>
                     <h6 class="section-title text-center text-primary text-uppercase">Our Catster</h6>
                     <h1 class="mb-5">สมาชิกของ <span class="text-primary text-uppercase">แคทสเตอร์</span></h1>
                 </div>
@@ -78,42 +75,42 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <a class="service-item rounded" href="">
                             <center><img width="110" height="110" src="images/c-4.jfif" role="img" aria-labelledby="title desc" class="center circular-image" style="border-radius: 50%;"></center>
-                            <h5 class="mb-3 mt-4">Rooms & Appartment</h5>
+                            <h5 class="mb-3 mt-4">Cat name</h5>
                             <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
                         </a>
                     </div>
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
                         <a class="service-item rounded" href="">
                             <center><img width="110" height="110" src="images/c-4.jfif" role="img" aria-labelledby="title desc" class="center circular-image" style="border-radius: 50%;"></center>
-                            <h5 class="mb-3 mt-4">Food & Restaurant</h5>
+                            <h5 class="mb-3 mt-4">Cat name</h5>
                             <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
                         </a>
                     </div>
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                         <a class="service-item rounded" href="">
                             <center><img width="110" height="110" src="images/c-4.jfif" role="img" aria-labelledby="title desc" class="center circular-image" style="border-radius: 50%;"></center>
-                            <h5 class="mb-3 mt-4">Spa & Fitness</h5>
+                            <h5 class="mb-3 mt-4">Cat name</h5>
                             <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
                         </a>
                     </div>
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
                         <a class="service-item rounded" href="">
                             <center><img width="110" height="110" src="images/c-4.jfif" role="img" aria-labelledby="title desc" class="center circular-image" style="border-radius: 50%;"></center>
-                            <h5 class="mb-3 mt-4">Sports & Gaming</h5>
+                            <h5 class="mb-3 mt-4">Cat name</h5>
                             <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
                         </a>
                     </div>
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                         <a class="service-item rounded" href="">
                             <center><img width="110" height="110" src="images/c-4.jfif" role="img" aria-labelledby="title desc" class="center circular-image" style="border-radius: 50%;"></center>
-                            <h5 class="mb-3 mt-4">Event & Party</h5>
+                            <h5 class="mb-3 mt-4">Cat name</h5>
                             <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
                         </a>
                     </div>
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
                         <a class="service-item rounded" href="">
                             <center><img width="110" height="110" src="images/c-4.jfif" role="img" aria-labelledby="title desc" class="center circular-image" style="border-radius: 50%;"></center>
-                            <h5 class="mb-3 mt-4">GYM & Yoga</h5>
+                            <h5 class="mb-3 mt-4">Cat name</h5>
                             <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
                         </a>
                     </div>
@@ -122,8 +119,9 @@
         </div>
 
 
+
         <!-- Testimonial Start -->
-        <div class="container-xxl testimonial mt-5 py-5 bg-dark wow zoomIn" data-wow-delay="0.1s" style="margin-bottom: 90px;">
+        <!-- <div class="container-xxl testimonial mt-5 py-5 bg-dark wow zoomIn" data-wow-delay="0.1s" style="margin-bottom: 90px;">
             <div class="container">
                 <div class="owl-carousel testimonial-carousel py-5">
                     <div class="testimonial-item position-relative bg-white rounded overflow-hidden">
@@ -161,7 +159,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- Testimonial End -->
 
 
@@ -182,15 +180,15 @@
             </div>
         </div>
         <!-- Newsletter Start -->
-        
 
-        
+
+
 
 
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
-    
+
     <!-- Footer -->
     <?php include('include/footer.php') ?>
 

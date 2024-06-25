@@ -1,5 +1,5 @@
 <?php
- session_start();
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +18,7 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">  
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -221,42 +221,42 @@
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <a class="service-item rounded" href="">
                             <center><img width="110" height="110" src="images/c-4.jfif" role="img" aria-labelledby="title desc" class="center circular-image" style="border-radius: 50%;"></center>
-                            <h5 class="mb-3 mt-4">Rooms & Appartment</h5>
+                            <h5 class="mb-3 mt-4">Cat name</h5>
                             <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
                         </a>
                     </div>
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
                         <a class="service-item rounded" href="">
                             <center><img width="110" height="110" src="images/c-4.jfif" role="img" aria-labelledby="title desc" class="center circular-image" style="border-radius: 50%;"></center>
-                            <h5 class="mb-3 mt-4">Food & Restaurant</h5>
+                            <h5 class="mb-3 mt-4">Cat name</h5>
                             <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
                         </a>
                     </div>
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                         <a class="service-item rounded" href="">
                             <center><img width="110" height="110" src="images/c-4.jfif" role="img" aria-labelledby="title desc" class="center circular-image" style="border-radius: 50%;"></center>
-                            <h5 class="mb-3 mt-4">Spa & Fitness</h5>
+                            <h5 class="mb-3 mt-4">Cat name</h5>
                             <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
                         </a>
                     </div>
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.4s">
                         <a class="service-item rounded" href="">
                             <center><img width="110" height="110" src="images/c-4.jfif" role="img" aria-labelledby="title desc" class="center circular-image" style="border-radius: 50%;"></center>
-                            <h5 class="mb-3 mt-4">Sports & Gaming</h5>
+                            <h5 class="mb-3 mt-4">Cat name</h5>
                             <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
                         </a>
                     </div>
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                         <a class="service-item rounded" href="">
                             <center><img width="110" height="110" src="images/c-4.jfif" role="img" aria-labelledby="title desc" class="center circular-image" style="border-radius: 50%;"></center>
-                            <h5 class="mb-3 mt-4">Event & Party</h5>
+                            <h5 class="mb-3 mt-4">Cat name</h5>
                             <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
                         </a>
                     </div>
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.6s">
                         <a class="service-item rounded" href="">
                             <center><img width="110" height="110" src="images/c-4.jfif" role="img" aria-labelledby="title desc" class="center circular-image" style="border-radius: 50%;"></center>
-                            <h5 class="mb-3 mt-4">GYM & Yoga</h5>
+                            <h5 class="mb-3 mt-4">Cat name</h5>
                             <p class="text-body mb-0">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
                         </a>
                     </div>
@@ -307,14 +307,14 @@
 
         <script>
             var videoModal = document.getElementById('videoModal');
-            videoModal.addEventListener('show.bs.modal', function (event) {
+            videoModal.addEventListener('show.bs.modal', function(event) {
                 var button = event.relatedTarget;
                 var videoSrc = button.getAttribute('data-src');
                 var iframe = videoModal.querySelector('iframe');
                 iframe.src = videoSrc;
             });
 
-            videoModal.addEventListener('hide.bs.modal', function (event) {
+            videoModal.addEventListener('hide.bs.modal', function(event) {
                 var iframe = videoModal.querySelector('iframe');
                 iframe.src = '';
             });
@@ -337,7 +337,7 @@
                             </div>
                             <div class="p-4 mt-2">
                                 <div class="d-flex justify-content-between mb-3">
-                                    <h5 class="mb-0">Junior Suite</h5>
+                                    <h5 class="mb-0">Product Name</h5>
                                 </div>
                                 <p class="text-body mb-3">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
                                 <div class="d-flex justify-content-between">
@@ -354,7 +354,7 @@
                             </div>
                             <div class="p-4 mt-2">
                                 <div class="d-flex justify-content-between mb-3">
-                                    <h5 class="mb-0">Junior Suite</h5>
+                                    <h5 class="mb-0">Product Name</h5>
                                 </div>
                                 <p class="text-body mb-3">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
                                 <div class="d-flex justify-content-between">
@@ -371,7 +371,7 @@
                             </div>
                             <div class="p-4 mt-2">
                                 <div class="d-flex justify-content-between mb-3">
-                                    <h5 class="mb-0">Junior Suite</h5>
+                                    <h5 class="mb-0">Product Name</h5>
                                 </div>
                                 <p class="text-body mb-3">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet diam sed stet lorem.</p>
                                 <div class="d-flex justify-content-between">
@@ -387,7 +387,7 @@
 
 
         <!-- สมาชิก -->
-        <div class="container-xxl py-5">
+        <!-- <div class="container-xxl py-5">
             <div class="container">
                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                     <h6 class="section-title text-center text-primary text-uppercase">Our Team</h6>
@@ -460,7 +460,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
 
         <!-- Newsletter Start -->
@@ -480,7 +480,7 @@
             </div>
         </div>
         <!-- Newsletter Start -->
-        
+
 
 
 
