@@ -56,7 +56,7 @@ if (!empty($_GET['product_id'])) {
 
   <!-- SIDEBAR -->
   <section id="sidebar">
-    <a href="#" class="brand">
+    <a href="admin.php" class="brand">
       <i class='bx bxs-smile'></i>
       <span class="text">AdminHub</span>
     </a>
@@ -134,19 +134,19 @@ if (!empty($_GET['product_id'])) {
         </div>
       </div>
 
-      <form id="insertForm" class="form-input" action="insert_product.php" method="POST" enctype="multipart/form-data" style="display: none;">
+      <form id="insertForm" class="form-input" action="insert_product.php" method="POST" enctype="multipart/form-data" style="display: none; background-color: #F9F9F9;">
         <div class="row">
           <div class="col-6">
-            <input type="file" name="product_picture">
-            <input type="text" name="product_id" id="product_id" placeholder="Product ID">
-            <input type="text" name="product_name" id="product_name" placeholder="Product Name">
-            <input type="text" name="product_price" id="product_price" placeholder="Price">
-            <input type="text" name="product_remain" id="product_remain" placeholder="Remain">
             <select name="type_id" id="type_id">
               <?php while ($row = mysqli_fetch_assoc($type_result)) : ?>
                 <option value="<?php echo htmlspecialchars($row['type_id']); ?>" <?php if ($row['type_id'] == $result['type_id']) echo 'selected'; ?>><?php echo htmlspecialchars($row['type_name']); ?></option>
               <?php endwhile; ?>
             </select>
+            <input type="text" name="product_id" id="product_id" placeholder="Product ID">
+            <input type="text" name="product_name" id="product_name" placeholder="Product Name">
+            <input type="text" name="product_price" id="product_price" placeholder="Price">
+            <input type="text" name="product_remain" id="product_remain" placeholder="Remain">
+            <input type="file" name="product_picture">
           </div>
         </div>
         <div class="row">

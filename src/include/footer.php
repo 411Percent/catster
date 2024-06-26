@@ -47,17 +47,13 @@
                 <div class="copyright">
                     <div class="row">
                         <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                            &copy; <a class="border-bottom" href="https://freewebsitecode.com">Your Site Name</a>, All Right Reserved. 
-							
-							
-							Designed By <a class="border-bottom" href="https://freewebsitecode.com">Free Website Code</a>
+                            &copy; <a class="border-bottom" href="https://freewebsitecode.com">มหาวิทยาลัยเทคโนโลยีราชมงคลอีสาน วิทยาเขตขอนแก่น</a>
+                            <br>
+                            คณะบริหารธุรกิจและเทคโนโลยีสารสนเทศ สาขาระบบสารสนเทศ 
                         </div>
                         <div class="col-md-6 text-center text-md-end">
                             <div class="footer-menu">
-                                <a href="">Home</a>
-                                <a href="">Cookies</a>
-                                <a href="">Help</a>
-                                <a href="">FQAs</a>
+                                <a href="index.php">Home</a>
                             </div>
                         </div>
                     </div>

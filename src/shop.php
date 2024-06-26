@@ -75,8 +75,7 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <select class="form-select" onchange="searchproduct(this.value)">
-                                    <option selected value="all">ประเภทสินค้า</option>
+                                <select id="product_type" class="form-select">
                                     <option value="all">สินค้าทั้งหมด</option>
                                     <option value="TYPE1">อาหาร</option>
                                     <option value="TYPE2">ของเล่น</option>
@@ -86,7 +85,7 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <button class="btn btn-primary w-100" onclick="myFunction()">ค้นหา</button>
+                        <button class="btn btn-primary w-100" onclick="filterProducts()">ค้นหา</button>
                     </div>
                 </div>
             </div>
@@ -238,6 +237,28 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
             for (var i = 0; i < productItems.length; i++) {
                 var productName = productItems[i].getElementsByTagName('p')[0];
                 if (productName.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    productItems[i].style.display = "";
+                } else {
+                    productItems[i].style.display = "none";
+                }
+            }
+        }
+
+        function filterProducts() {
+            // Get the value from the search input and the selected product type
+            var input = document.getElementById('txt_search').value.toUpperCase();
+            var selectedType = document.getElementById('product_type').value;
+            var productList = document.getElementById('productlist');
+            var productItems = productList.getElementsByClassName('product-items');
+
+            // Loop through all product items
+            for (var i = 0; i < productItems.length; i++) {
+                var productName = productItems[i].getElementsByTagName('p')[0].innerHTML.toUpperCase();
+                var matchesSearch = productName.indexOf(input) > -1;
+                var matchesType = selectedType === 'all' || productItems[i].classList.contains(selectedType);
+
+                // Show or hide the product item based on the search and type filter
+                if (matchesSearch && matchesType) {
                     productItems[i].style.display = "";
                 } else {
                     productItems[i].style.display = "none";
