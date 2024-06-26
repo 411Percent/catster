@@ -78,7 +78,6 @@ if (!empty($IDs)) {
                         <form action="update_cart.php" method="POST">
                             <div class="d-flex justify-content-between align-items-center mb-4">
                                 <h3>ตะกร้าสินค้า</h3>
-                                <button type="submit" class="btn btn-warning text-end" style="background-color: #FFA559;"><i class="fa-solid fa-arrows-rotate"></i></button>
                             </div>
 
                             <?php if ($rows > 0) : ?>
@@ -112,7 +111,7 @@ if (!empty($IDs)) {
                                     </div>
                                 <?php endforeach; ?>
                                 <div class="card-body d-grid gap-2">
-                                    <a href="form_checkout.php" type="button" class="btn btn-warning btn-block btn-md" style="background-color: #FFA559;">Check out</a>
+                                    <a href="form_checkout.php" type="button" class="btn btn-warning btn-block btn-md" style="background-color: orange;">Check out</a>
                                 </div>
                             <?php else : ?>
                                 <div class="row">
@@ -121,7 +120,7 @@ if (!empty($IDs)) {
                                     </div>
                                 </div>
                                 <div class="card-body d-grid gap-2">
-                                    <a href="shop.php" type="button" class="btn btn-block btn-md" style="background-color: #FFA559;">เลือกสินค้าเลย! <i class="fa-solid fa-cart-plus ms-2"></i></a>
+                                    <a href="shop.php" type="button" class="btn btn-block btn-md" style="background-color: orange;">เลือกสินค้าเลย! <i class="fa-solid fa-cart-plus ms-2"></i></a>
                                 </div>
                             <?php endif; ?>
                         </form>
@@ -176,9 +175,7 @@ if (!empty($IDs)) {
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-    
+
 </body>
-
-
 
 </html>
