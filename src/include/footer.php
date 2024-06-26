@@ -21,7 +21,7 @@
                             <a class="btn btn-outline-light btn-social" href="https://freewebsitecode.com"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
-                    <div class="col-lg-5 col-md-12">
+                    <!-- <div class="col-lg-5 col-md-12">
                         <div class="row gy-5 g-4">
                             <div class="col-md-6">
                                 <h6 class="section-title text-start text-primary text-uppercase mb-4">Company</h6>
@@ -40,7 +40,7 @@
                                 <a class="btn btn-link" href="">GYM & Yoga</a>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="container">
@@ -53,7 +53,7 @@
                         </div>
                         <div class="col-md-6 text-center text-md-end">
                             <div class="footer-menu">
-                                <a href="index.php">Home</a>
+                                <a href="index.php">หน้าแรก</a>
                             </div>
                         </div>
                     </div>

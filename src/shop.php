@@ -41,6 +41,7 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
 
     <!-- Template Stylesheet -->
     <link href="assets/css/style.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/5f1b7c0a83.js" crossorigin="anonymous"></script>
 </head>
 
 <body style="background-color: #fff;">
@@ -131,7 +132,7 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
         <div class="modal-page">
             <div class="modaldesc-content">
                 <img id="mdd-img" class="modaldesc-img" src="" alt="">
-                <div class="modaldesc-detail">
+                <div class="modaldesc-detail" style="margin: 20px;">
                     <p id="mdd-name" style="font-size: 1.5vw;"></p>
                     <p id="mdd-price" style="font-size: 1.2vw;"></p>
                     <br>
@@ -375,8 +376,8 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
     }
 
     .modaldesc-img {
-        width: 20vw;
-        height: 20vw;
+        width: 15vw;
+        height: 15vw;
         object-fit: cover;
         border-radius: 10px;
     }
@@ -395,7 +396,7 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
     }
 
     .btn-buy {
-        background: linear-gradient(125deg, #D79771, #D79771);
+        background: #FFA559;
         color: #fff;
         margin-left: 10px;
     }
