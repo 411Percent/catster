@@ -11,54 +11,107 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
 
 <!DOCTYPE html>
 <html lang="th">
+
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <link href="assets/fontawesome/css/fontawesome.min.css" rel="stylesheet">
-    <link href="assets/fontawesome/css/brands.min.css" rel="stylesheet">
-    <link href="assets/fontawesome/css/solid.min.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/5f1b7c0a83.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <title>สินค้า</title>
+    <meta charset="utf-8">
+    <title>Catster - ร้านค้า</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="assets/css/style.css" rel="stylesheet">
 </head>
 
-<body>
-    <?php include 'include/menu.php'; ?>
+<body style="background-color: #fff;">
+    <?php include('include/header.php'); ?>
+
+
+    <!-- Page Header Start -->
+    <div class="container-fluid page-header mb-2 p-0" style="background-image: url(img/carousel-1.jpg);">
+        <div class="container-fluid page-header-inner py-5">
+            <div class="container text-center pb-5">
+                <h1 class="display-3 text-white mb-3 animated slideInDown">ร้านค้า</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center text-uppercase">
+                        <li class="breadcrumb-item"><a href="index.php">Home</a></li>
+                        <li class="breadcrumb-item text-white active" aria-current="page">Shop</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+    <div class="container-fluid booking pb-5 wow fadeIn" data-wow-delay="0.1s" style="position: sticky; top: 0;">
+        <div class="container">
+            <div class="bg-white shadow" style="padding: 35px;">
+                <div class="row g-2">
+                    <div class="col-md-10">
+                        <div class="row g-2">
+                            <div class="col-md-6">
+                                <div class="date" id="date1" data-target-input="nearest">
+                                    <input id="txt_search" type="text" class="form-control datetimepicker-input" placeholder="Search something..." />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <select class="form-select" onchange="searchproduct(this.value)">
+                                    <option selected value="all">ประเภทสินค้า</option>
+                                    <option value="all">สินค้าทั้งหมด</option>
+                                    <option value="TYPE1">อาหาร</option>
+                                    <option value="TYPE2">ของเล่น</option>
+                                    <option value="TYPE3">อุปกรณ์</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-primary w-100" onclick="myFunction()">ค้นหา</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <div class="row" style="margin-top: 110px;">
+    <div class="row">
         <div class="col-10"></div>
         <div class="col-2">
             <div class="cart-container">
                 <a href="cart.php"><span class="badge border rounded-pill cart-badge" style="background-color: #D04925; color: #E9E5DD;"><?php echo $cart_count; ?></span>
-                <i class="fas fa-cart-shopping" style="color: #696464;"></i></a>
+                    <i class="fas fa-cart-shopping" style="color: #696464;"></i></a>
             </div>
         </div>
     </div>
-    <div class="container">
-        <div class="col-md-4">
-            <div class="position-sticky" style="top: 6rem; background-color: #454545;">
-                <div class="p-4 mb-3 rounded">
-                    <input onkeyup="myFunction()" id="txt_search" type="text" class="sidebar-search" placeholder="Search something...">
-                    <a onclick="searchproduct('all')" class="sidebar-items" style="text-decoration: none;">All product</a>
-                    <a onclick="searchproduct('TYPE1')" class="sidebar-items" style="text-decoration: none;">Food</a>
-                    <a onclick="searchproduct('TYPE2')" class="sidebar-items" style="text-decoration: none;">Toy</a>
-                    <a onclick="searchproduct('TYPE3')" class="sidebar-items" style="text-decoration: none;">Item</a>
-                </div>
-            </div>
-        </div>
-
-        
+    <div class="container" style="margin-bottom: 150px;">
         <!-- Product list -->
         <div id="productlist" class="product">
-            <?php while($product = mysqli_fetch_assoc($product_result)): ?>
+            <?php while ($product = mysqli_fetch_assoc($product_result)) : ?>
                 <!-- Individual product item -->
                 <div onclick="openProductDetail(<?= $product['product_id']; ?>)" class="product-items <?= $product['type_id']; ?>">
                     <!-- Product image -->
@@ -170,7 +223,7 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
 
 
         function closeModal() {
-            $(".modal").css('display','none');
+            $(".modal").css('display', 'none');
         }
 
 
@@ -192,218 +245,185 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
             }
         }
     </script>
+
+    <!-- Footer -->
+    <?php include('include/footer.php') ?>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/tempusdominus/js/moment.min.js"></script>
+    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
 </body>
+
+
 </html>
 
 
 
 
 <style>
-    @import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&display=swap");
-    * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
-    }
     *::-webkit-scrollbar {
-    display: none;
+        display: none;
     }
-    .nav-container {
-    max-width: 90vw;
-    height: 100%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    }
-    .logonav {
-    width: 7vw;
-    object-fit: contain;
-    }
-    .nav-profile {
-    display: flex;
-    align-items: center;
-    }
-    .nav-profile-name {
-    color: #fff;
-    font-size: 1.2vw;
-    margin-right: 10px;
-    }
+
     .fa-cart-shopping {
-    font-size: 2vw;
-    color: #fff;
+        font-size: 2vw;
+        color: #fff;
     }
-    .nav-profile-cart {
-    position: relative;
-    }
+
     .cartcount {
-    position: absolute;
-    top: -15px;
-    right: -15px;
-    width: 25px;
-    height: 25px;
-    background: red;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
+        position: absolute;
+        top: -15px;
+        right: -15px;
+        width: 25px;
+        height: 25px;
+        background: red;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
     }
-    .container {
-    width: 90vw;
-    margin: 0 auto;
-    display: flex;
-    }
-    .sidebar {
-    width: 20%;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    }
+
     .product {
-    width: 80%;
-    padding: 10px;
-    height: 100%;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 20px;
+        width: 100%;
+        padding: 10px;
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-gap: 25px;
     }
-    .sidebar-search {
-    padding: 10px;
-    border: 2px solid transparent;
-    width: 100%;
-    font-size: 1.2vw;
-    outline: none;
-    border-radius: 5px;
-    background: #fff;
-    transition: 0.3s;
-    margin-bottom: 20px;
-    }
-    .sidebar-search:focus {
-    border: 2px solid #5C3D2E;
-    }
-    .sidebar-items {
-    background: #fff;
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #e5e5e5;
-    color: #000;
-    transition: 300ms;
-    font-size: 1.2vw;
-    }
-    .sidebar-items:hover {
-    background: #5C3D2E;
-    color: #fff;
-    }
+
     .product-items {
-    cursor: pointer;
-    transition: 0.3s;
+        cursor: pointer;
+        transition: 0.3s;
     }
+
     .product-items:hover {
-    transform: scale(1.03);
+        transform: scale(1.03);
     }
+
     .product-img {
-    width: 100%;
-    height: 17vw;
-    object-fit: cover;
-    border-radius: 10px;
+        width: 100%;
+        height: 17vw;
+        object-fit: cover;
+        border-radius: 10px;
     }
+
     .modal,
     .modal-bg {
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
+
     .modal-page {
-    z-index: 99;
-    min-width: 30vw;
-    max-width: 60vw;
-    max-height: 30vw;
-    overflow: scroll;
-    background-color: #fff;
-    border-radius: 15px;
-    padding: 20px;
+        z-index: 99;
+        min-width: 30vw;
+        max-width: 60vw;
+        max-height: 30vw;
+        overflow: scroll;
+        background-color: #fff;
+        border-radius: 15px;
+        padding: 20px;
     }
+
     .modaldesc-content {
-    width: 100%;
-    display: flex;
+        width: 100%;
+        display: flex;
     }
+
     .modaldesc-detail {
-    margin-left: 20px;
+        margin-left: 20px;
     }
+
     .modaldesc-img {
-    width: 20vw;
-    height: 20vw;
-    object-fit: cover;
-    border-radius: 10px;
+        width: 20vw;
+        height: 20vw;
+        object-fit: cover;
+        border-radius: 10px;
     }
+
     .btn-control {
-    display: flex;
-    justify-content: flex-end;
+        display: flex;
+        justify-content: flex-end;
     }
+
     .btn {
-    padding: 10px 20px;
-    cursor: pointer;
-    border: #fff;
-    border-radius: 5px;
-    transition: 0.3s;
+        padding: 10px 20px;
+        cursor: pointer;
+        border: #fff;
+        border-radius: 5px;
+        transition: 0.3s;
     }
+
     .btn-buy {
-    background: linear-gradient(125deg, #D79771, #D79771);
-    color: #fff;
-    margin-left: 10px;
+        background: linear-gradient(125deg, #D79771, #D79771);
+        color: #fff;
+        margin-left: 10px;
     }
-    .cartlist {
-    }
+
     .cartlist-items {
-    width: 50vw;
-    display: flex;
-    margin-bottom: 20px;
-    justify-content: space-between;
+        width: 50vw;
+        display: flex;
+        margin-bottom: 20px;
+        justify-content: space-between;
     }
+
     .cartlist-left {
-    display: flex;
+        display: flex;
     }
+
     .cartlist-right {
-    display: flex;
-    align-items: center;
+        display: flex;
+        align-items: center;
     }
+
     .cartlist-left img {
-    width: 5vw;
-    height: 5vw;
-    object-fit: cover;
-    border-radius: 5px;
-    margin-right: 10px;
+        width: 5vw;
+        height: 5vw;
+        object-fit: cover;
+        border-radius: 5px;
+        margin-right: 10px;
     }
+
     .btnc {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #000;
-    cursor: pointer;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #000;
+        cursor: pointer;
     }
 
     .cart-container {
-            position: relative;
-            display: inline-block;
-        }
-        .cart-badge {
-            position: absolute;
-            top: -10px;
-            right: -10px;
-            font-size: 0.75rem; /* Adjust font size if needed */
-        }
+        position: relative;
+        display: inline-block;
+    }
+
+    .cart-badge {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        font-size: 0.75rem;
+        /* Adjust font size if needed */
+    }
 </style>

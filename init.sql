@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mariadb-catster
--- Generation Time: Jun 24, 2024 at 05:40 PM
+-- Generation Time: Jun 25, 2024 at 08:40 AM
 -- Server version: 11.4.2-MariaDB-ubu2404
 -- PHP Version: 8.2.8
 
@@ -43,7 +43,7 @@ CREATE TABLE `employees` (
 --
 
 INSERT INTO `employees` (`emp_username`, `emp_firstname`, `emp_lastname`, `emp_address`, `emp_email`, `emp_tel`, `emp_picture`, `emp_password`) VALUES
-('emp.ai', 'Ai', 'Employee', 'ทดสอบการเพิ่มพนักงาน', 'emp@gmail.com', '0811052518', 0x31343070782d524d5554495f4b4f5241542e706e67, '1234'),
+('emp.ai', 'Phenphisut', 'Pongsatitpat', 'ทดสอบการแก้ไขพนักงาน', 'emp@gmail.com', '0811052518', 0x62672e6a7067, '1111'),
 ('emp.fang', 'ฟ่าง', 'นงนภัส', '243/116', 'fang@gmail.com', '0811052518', 0x312e6a7067, '1234');
 
 -- --------------------------------------------------------
@@ -68,8 +68,9 @@ CREATE TABLE `members` (
 --
 
 INSERT INTO `members` (`mem_username`, `mem_firstname`, `mem_lastname`, `mem_email`, `mem_tel`, `mem_picture`, `mem_status`, `mem_password`) VALUES
-('mem.ai', 'ไอย์', 'ทดสอบแก้ไข', 'test@gmail.com', '0811052518', 0x70656f706c652e706e67, 0, '1234'),
-('mem.fang', 'Nongnapat', 'Sriwongjan', 'fang.nnp@gmail.com', '0920726830', 0x312e6a7067, 0, '1234');
+('mem.ai', 'ไอย์', 'ทดสอบแก้ไข', 'test@gmail.com', '0811052518', 0x6179652e6a7067, 0, '1234'),
+('mem.fang', 'Nongnapat', 'Sriwongjan', 'fang.nnp@gmail.com', '0920726830', 0x312e6a7067, 0, '1234'),
+('testmem', 'ปิยพัทธ์', 'โพธิกะ', '', '', 0x696d616765732f6e6f696d6167652e706e67, 0, '1234');
 
 -- --------------------------------------------------------
 
@@ -185,7 +186,8 @@ CREATE TABLE `product_type` (
 INSERT INTO `product_type` (`type_id`, `type_name`) VALUES
 ('TYPE1', 'อาหาร'),
 ('TYPE2', 'ของเล่น'),
-('TYPE3', 'อุปกรณ์');
+('TYPE3', 'อุปกรณ์'),
+('type5', 'ประเภทสินค้า');
 
 -- --------------------------------------------------------
 
@@ -225,7 +227,8 @@ CREATE TABLE `vaccine` (
 
 INSERT INTO `vaccine` (`vac_id`, `vac_name`, `vac_desc`) VALUES
 ('VAC01', 'FPV', 'ไข้หัดแมว'),
-('VAC02', 'FeLV', 'ไวรัสมะเร็งเม็ดเลือดขาว');
+('VAC02', 'FeLV', 'ไวรัสมะเร็งเม็ดเลือดขาว'),
+('VAC03', 'vactest', 'testeeee');
 
 --
 -- Indexes for dumped tables

@@ -3,9 +3,9 @@
                 <div class="row g-5">
                     <div class="col-md-6 col-lg-4">
                         <div class="bg-primary rounded p-4">
-                            <a href="index.html"><h1 class="text-white text-uppercase mb-3">Hotelier</h1></a>
+                            <a href="index.html"><h1 class="text-white text-uppercase mb-3">CATSTER</h1></a>
                             <p class="text-white mb-0">
-								Download <a class="text-dark fw-medium" href="https://freewebsitecode.com/hotel-html-template-pro">Hotelier – Premium Version</a>, build a professional website for your hotel business and grab the attention of new visitors upon your site’s launch.
+                                บ้านพักพิงแมวจรแคทสเตอร์
 							</p>
                         </div>
                     </div>
@@ -28,7 +28,7 @@
                                 <a class="btn btn-link" href="">About Us</a>
                                 <a class="btn btn-link" href="">Contact Us</a>
                                 <a class="btn btn-link" href="">Privacy Policy</a>
-                                <a class="btn btn-link" href="">Terms & Condition</a>
+                                <a class="btn btn-link" href="">Team & Adviser</a>
                                 <a class="btn btn-link" href="">Support</a>
                             </div>
                             <div class="col-md-6">
