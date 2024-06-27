@@ -6,6 +6,22 @@ if (!isset($_SESSION['username'])) {
 }
 $sql = "SELECT * FROM orders";
 $result = mysqli_query($conn, $sql);
+
+$user_data = null;
+
+// Check if the username session variable is set
+if (isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
+    $sql = "SELECT * FROM employees WHERE emp_username = '$username'";
+
+    // Execute the query and fetch the result_user
+    $result_user = $conn->query($sql);
+
+    if ($result_user->num_rows > 0) {
+        // Fetch the user data
+        $user_data = $result_user->fetch_assoc();
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -23,6 +39,17 @@ $result = mysqli_query($conn, $sql);
     <link rel="stylesheet" href="assets/css/admin_style.css">
 
     <title>AdminHub</title>
+
+    <style>
+        #sidebar {
+            text-align: left !important;
+        }
+
+        .side-menu {
+            padding-left: 0 !important;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -167,7 +194,7 @@ $result = mysqli_query($conn, $sql);
                                                         $payment_sql = "SELECT * FROM payment WHERE order_id = '$order_id'";
                                                         $payment_result = mysqli_query($conn, $payment_sql);
                                                         while ($payment_row = mysqli_fetch_assoc($payment_result)) { ?>
-                                                            <img src="images/<?php echo $payment_row['pay_slip']; ?>" style="width: 480px;">
+                                                            <img src="images/<?php echo $payment_row['pay_slip']; ?>" style="width: 450px; height: 450px;">
                                                         <?php } ?>
 
                                                         <strong class="mb-0">Payment summary</strong>
@@ -178,7 +205,7 @@ $result = mysqli_query($conn, $sql);
                                                         while ($order_details_row = mysqli_fetch_assoc($order_details_result)) { ?>
                                                             <div class="d-flex justify-content-between">
                                                                 <p class="fw-small mb-0"><?php echo $order_details_row['quantity'] . " "; ?><?php echo " " . $order_details_row['product_name']; ?></p>
-                                                                <p class="text-muted mb-0">$<?php echo $order_details_row['sub_total']; ?></p>
+                                                                <p class="text-muted mb-0">฿<?php echo $order_details_row['sub_total']; ?></p>
                                                             </div>
                                                         <?php } ?>
                                                         <hr class="mt-2 mb-4" style="height: 0; background-color: transparent; opacity: .75; border-top: 2px dashed #9e9e9e;">
@@ -186,16 +213,16 @@ $result = mysqli_query($conn, $sql);
                                                         <!-- Order total -->
                                                         <div class="d-flex justify-content-between">
                                                             <p class="fw-bold">Total</p>
-                                                            <p class="fw-bold"><?php echo $row['order_total']; ?></p>
+                                                            <p class="fw-bold">฿<?php echo $row['order_total']; ?></p>
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer d-flex justify-content-center border-top-0 py-4">
                                                         <?php if ($row['order_status'] == 'wait') { ?>
                                                             <a href="admin_confirm_order.php?action=confirm&order_id=<?php echo $row['order_id']; ?>" class="btn btn-lg mb-1" style="background-color: #FFA931;">
-                                                                Confirm
+                                                                ยืนยัน
                                                             </a>
                                                             <a href="admin_confirm_order.php?action=refuse&order_id=<?php echo $row['order_id']; ?>" class="btn btn-lg mb-1" style="background-color: #D1274B; color: #fff;">
-                                                                Refuse
+                                                                ปฏิเสธ
                                                             </a>
                                                         <?php } ?>
                                                     </div>
