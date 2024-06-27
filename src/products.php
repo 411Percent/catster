@@ -128,7 +128,7 @@ if (!empty($_GET['product_id'])) {
             </li>
             <li><i class='bx bx-chevron-right'></i></li>
             <li>
-              <a href="employees.php">Product</a>
+              <a href="#">Product</a>
             </li>
           </ul>
         </div>
@@ -144,8 +144,11 @@ if (!empty($_GET['product_id'])) {
             </select>
             <input type="text" name="product_id" id="product_id" placeholder="Product ID">
             <input type="text" name="product_name" id="product_name" placeholder="Product Name">
+            <input type="text" name="product_unit" id="product_unit" placeholder="Unit">
+            <input type="text" name="product_cost" id="product_cost" placeholder="Cost">
             <input type="text" name="product_price" id="product_price" placeholder="Price">
             <input type="text" name="product_remain" id="product_remain" placeholder="Remain">
+            <input type="text" name="product_desc" id="product_desc" placeholder="Description">
             <input type="file" name="product_picture">
           </div>
         </div>
@@ -158,10 +161,12 @@ if (!empty($_GET['product_id'])) {
         </div>
       </form>
 
+
+
       <div class="table-data">
         <div class="order">
           <div class="head">
-            <h3>รายชื่อพนักงาน</h3>
+            <h3>รายชื่อสินค้า</h3>
             <i class='bx bx-plus' id="insertFormButton" style="cursor: pointer;">เพิ่ม</i>
             <i class='bx bx-search'></i>
             <i class='bx bx-filter'></i>
@@ -170,10 +175,12 @@ if (!empty($_GET['product_id'])) {
             <thead>
               <tr>
                 <th></th>
-                <th>#</th>
-                <th>Name</th>
-                <th>Type</th>
-                <th>Manage</th>
+                <th>ชื่อ</th>
+                <th>ประเภท</th>
+                <th>ราคา</th>
+                <th>หน่วยนับ</th>
+                <th>คงเหลือ</th>
+                <th>จัดการ</th>
               </tr>
             </thead>
             <tbody>
@@ -187,9 +194,11 @@ if (!empty($_GET['product_id'])) {
                         <img src="images/noimage.png" style="width: 50px; height: auto;" alt="No Image">
                       <?php endif; ?>
                     </td>
-                    <td><?php echo htmlspecialchars($product['product_id']); ?></td>
                     <td><?php echo htmlspecialchars($product['product_name']); ?></td>
                     <td><?php echo htmlspecialchars($product['type_name']); ?></td>
+                    <td><?php echo htmlspecialchars($product['product_price']); ?></td>
+                    <td><?php echo htmlspecialchars($product['product_unit']); ?></td>
+                    <td><?php echo htmlspecialchars($product['product_remain']); ?></td>
                     <td>
                       <a href="form_update_product.php?product_id=<?php echo htmlspecialchars($product['product_id']); ?>">
                         <i class="fa-solid fa-pen-to-square" style="margin-right: 10px; color: orange;"></i><span style="color: orange;">Update</span>

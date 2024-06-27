@@ -16,6 +16,8 @@ $type_result = mysqli_query($conn, $type_query);
 $result = [
     'product_id' => '',
     'product_name' => '',
+    'product_unit' => '',
+    'product_cost' => '',
     'product_price' => '',
     'product_remain' => '',
     'product_desc' => '',
@@ -152,7 +154,10 @@ if (!empty($_GET['product_id'])) {
                         <input type="text" name="product_id" id="product_id" style="background-color: #CCC;" value="<?php echo htmlspecialchars($result['product_id']); ?>" readonly>
                         <input type="text" name="product_name" id="product_name" value="<?php echo htmlspecialchars($result['product_name']); ?>">
                         <input type="text" name="product_price" id="product_price" value="<?php echo htmlspecialchars($result['product_price']); ?>">
+                        <input type="text" name="product_unit" id="product_unit" value="<?php echo htmlspecialchars($result['product_unit']); ?>">
+                        <input type="text" name="product_cost" id="product_cost" value="<?php echo htmlspecialchars($result['product_cost']); ?>">
                         <input type="text" name="product_remain" id="product_remain" value="<?php echo htmlspecialchars($result['product_remain']); ?>">
+                        <input type="text" name="product_desc" id="product_desc" value="<?php echo htmlspecialchars($result['product_desc']); ?>">
                         <select name="type_id" id="type_id">
                             <?php while ($row = mysqli_fetch_assoc($type_result)) : ?>
                                 <option value="<?php echo htmlspecialchars($row['type_id']); ?>" <?php if ($row['type_id'] == $result['type_id']) echo 'selected'; ?>><?php echo htmlspecialchars($row['type_name']); ?></option>
