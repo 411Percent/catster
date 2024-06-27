@@ -16,10 +16,12 @@ $user_data = null;
 // Check if the username session variable is set
 if (isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
-    $sql = "SELECT * FROM employees WHERE emp_username = '$username'";
+    $sql = $conn->prepare("SELECT * FROM employees WHERE emp_username = ?");
+    $sql->bind_param("s", $username);
 
     // Execute the query and fetch the result
-    $result = $conn->query($sql);
+    $sql->execute();
+    $result = $sql->get_result();
 
     if ($result->num_rows > 0) {
         // Fetch the user data
@@ -27,7 +29,6 @@ if (isset($_SESSION['username'])) {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,8 +46,6 @@ if (isset($_SESSION['username'])) {
 </head>
 
 <body>
-
-
     <!-- SIDEBAR -->
     <section id="sidebar">
         <a href="#" class="brand">
@@ -121,7 +120,7 @@ if (isset($_SESSION['username'])) {
                 <span class="num">8</span>
             </a>
             <a href="#" class="profile">
-                <img src="images/<?php echo isset($user_data['emp_picture']) ? $user_data['emp_picture'] : 'noimage.png'; ?>">
+                <img src="images/<?php echo isset($user_data['emp_picture']) ? htmlspecialchars($user_data['emp_picture']) : 'noimage.png'; ?>">
             </a>
         </nav>
         <!-- NAVBAR -->
@@ -137,7 +136,7 @@ if (isset($_SESSION['username'])) {
             <div class="table-data">
                 <div class="todo">
                     <div class="head">
-                        <h3><?php echo isset($user_data['emp_firstname']) ? $user_data['emp_firstname'] : ''; ?> <?php echo isset($user_data['emp_lastname']) ? $user_data['emp_lastname'] : ''; ?></h3>
+                        <h3><?php echo isset($user_data['emp_firstname']) ? htmlspecialchars($user_data['emp_firstname']) : ''; ?> <?php echo isset($user_data['emp_lastname']) ? htmlspecialchars($user_data['emp_lastname']) : ''; ?></h3>
                     </div>
                     <div class="row">
                         <div class="col-md-3">
@@ -148,22 +147,22 @@ if (isset($_SESSION['username'])) {
                                         <div class="avatar-edit">
                                             <input type="file" name="emp_picture" id="imageUpload" accept=".png, .jpg, .jpeg" onchange="previewImage(this)" />
                                             <label for="imageUpload"><i class="fa-solid fa-gear" style="color: #fff;"></i></label>
-                                            <input type="hidden" name="current_picture" value="<?php echo isset($user_data['emp_picture']) ? $user_data['emp_picture'] : 'default.png'; ?>">
+                                            <input type="hidden" name="current_picture" value="<?php echo isset($user_data['emp_picture']) ? htmlspecialchars($user_data['emp_picture']) : 'default.png'; ?>">
                                         </div>
                                         <div class="avatar-preview">
-                                            <div id="imagePreview" style="background-image: url('images/<?php echo isset($user_data['emp_picture']) ? $user_data['emp_picture'] : 'default.png'; ?>');">
+                                            <div id="imagePreview" style="background-image: url('images/<?php echo isset($user_data['emp_picture']) ? htmlspecialchars($user_data['emp_picture']) : 'default.png'; ?>');">
                                             </div>
                                         </div>
                                     </div>
                                     <!-- End Avatar Upload -->
 
                                     <h4 style="margin-top: 50px;">User Info</h4>
-                                    <input type="text" name="emp_username" value="<?php echo isset($user_data['emp_username']) ? $user_data['emp_username'] : ''; ?>" style="margin-top: 5px; background-color: #FFA559; color: #fff;" readonly>
-                                    <input type="text" name="emp_firstname" value="<?php echo isset($user_data['emp_firstname']) ? $user_data['emp_firstname'] : ''; ?>" style="margin-top: 5px;">
-                                    <input type="text" name="emp_lastname" value="<?php echo isset($user_data['emp_lastname']) ? $user_data['emp_lastname'] : ''; ?>" style="margin-top: 5px;">
-                                    <input type="email" name="emp_email" value="<?php echo isset($user_data['emp_email']) ? $user_data['emp_email'] : ''; ?>" style="margin-top: 5px;">
-                                    <input type="text" name="emp_tel" value="<?php echo isset($user_data['emp_tel']) ? $user_data['emp_tel'] : ''; ?>" style="margin-top: 5px;">
-                                    <textarea rows="4" name="emp_address"><?php echo isset($user_data['emp_address']) ? $user_data['emp_address'] : ''; ?></textarea>
+                                    <input type="text" name="emp_username" value="<?php echo isset($user_data['emp_username']) ? htmlspecialchars($user_data['emp_username']) : ''; ?>" style="margin-top: 5px; background-color: #FFA559; color: #fff;" readonly>
+                                    <input type="text" name="emp_firstname" value="<?php echo isset($user_data['emp_firstname']) ? htmlspecialchars($user_data['emp_firstname']) : ''; ?>" style="margin-top: 5px;">
+                                    <input type="text" name="emp_lastname" value="<?php echo isset($user_data['emp_lastname']) ? htmlspecialchars($user_data['emp_lastname']) : ''; ?>" style="margin-top: 5px;">
+                                    <input type="email" name="emp_email" value="<?php echo isset($user_data['emp_email']) ? htmlspecialchars($user_data['emp_email']) : ''; ?>" style="margin-top: 5px;">
+                                    <input type="text" name="emp_tel" value="<?php echo isset($user_data['emp_tel']) ? htmlspecialchars($user_data['emp_tel']) : ''; ?>" style="margin-top: 5px;">
+                                    <textarea rows="4" name="emp_address"><?php echo isset($user_data['emp_address']) ? htmlspecialchars($user_data['emp_address']) : ''; ?></textarea>
 
                                     <h4 style="margin-top: 50px;">Change Password</h4>
                                     <input type="hidden" name="emp_password">
@@ -218,6 +217,7 @@ if (isset($_SESSION['username'])) {
 </body>
 
 </html>
+
 
 
 
