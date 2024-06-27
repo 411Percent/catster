@@ -66,9 +66,9 @@ if (isset($_SESSION['username'])) {
 				</a>
 			</li>
 			<li>
-				<a href="#">
+				<a href="orders.php">
 					<i class='bx bxs-shopping-bag-alt'></i>
-					<span class="text">My Store</span>
+					<span class="text">Orders</span>
 				</a>
 			</li>
 			<li>
