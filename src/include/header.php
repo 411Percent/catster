@@ -106,7 +106,7 @@ if (isset($_SESSION['cart'])) {
                                     <p>Edit Profile</p>
                                     <span>></span>
                                 </a>
-                                <a href="#" class="sub-menu-link">
+                                <a href="your_orders.php" class="sub-menu-link">
                                     <p>Your Order</p>
                                     <span>></span>
                                 </a>
@@ -140,6 +140,8 @@ if (isset($_SESSION['cart'])) {
 <style>
     .user-pic {
         width: 40px;
+        height: 40px;
+        object-fit: cover;
         border-radius: 50%;
         cursor: pointer;
         margin-left: 30px;
@@ -183,6 +185,8 @@ if (isset($_SESSION['cart'])) {
 
     .user-info img {
         width: 60px;
+        height: 60px;
+        object-fit: cover;
         border-radius: 50%;
         margin-right: 15px;
     }

@@ -95,75 +95,70 @@ $conn->close();
                 </div>
                 <div class="row g-4">
                     <div class="container">
-                        <div class="row">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <div class="text-center">
-                                            <!-- Avatar Upload -->
-                                            <form class="form-horizontal" role="form" action="update_mem.php" method="POST" enctype="multipart/form-data">
-                                                <div class="avatar-upload">
-                                                    <div class="avatar-edit">
-                                                        <input type='file' type="file" name="mem_picture" id="imageUpload" accept=".png, .jpg, .jpeg" />
-                                                        <label for="imageUpload"><i class="fa-solid fa-gear" style="color: #fff;"></i></label>
-                                                        <input type="hidden" name="current_picture" value="<?php echo $row['mem_picture']; ?>">
-                                                    </div>
-
-                                                    <div class="avatar-preview">
-                                                        <div id="imagePreview" style="background-image: url('images/<?php echo $row['mem_picture'] ?>');">
-                                                        </div>
-                                                    </div>
+                        <div class="row justify-content-center align-items-center">
+                            <div class="col-md-6">
+                                <div class="text-center">
+                                    <!-- Avatar Upload -->
+                                    <form class="form-horizontal" role="form" action="update_mem.php" method="POST" enctype="multipart/form-data">
+                                        <div class="avatar-upload">
+                                            <div class="avatar-edit">
+                                                <input type='file' name="mem_picture" id="imageUpload" accept=".png, .jpg, .jpeg" />
+                                                <label for="imageUpload"><i class="fa-solid fa-gear" style="color: #fff;"></i></label>
+                                                <input type="hidden" name="current_picture" value="<?php echo htmlspecialchars($row['mem_picture'], ENT_QUOTES, 'UTF-8'); ?>">
+                                            </div>
+                                            <div class="avatar-preview">
+                                                <div id="imagePreview" style="background-image: url('images/<?php echo htmlspecialchars($row['mem_picture'], ENT_QUOTES, 'UTF-8'); ?>');">
                                                 </div>
-                                                <!-- End Avatar Upload -->
-                                        </div>
-                                    </div>
-                                    <div class="col-md-9 personal-info">
-                                        <h5>Personal info</h5>
-                                        <div class="form-group">
-                                            <label class="col-md-3 control-label">Username:</label>
-                                            <div class="col-md-8">
-                                                <input class="form-control" type="text" name="mem_username" value="<?php echo $_SESSION['username'] ?>" style="background-color: #d6d6d6;" readonly>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label class="col-md-3 control-label">Firstname:</label>
-                                            <div class="col-md-8">
-                                                <input class="form-control" type="text" name="mem_firstname" value="<?php echo $row['mem_firstname'] ?>">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-md-3 control-label">Lastname:</label>
-                                            <div class="col-md-8">
-                                                <input class="form-control" type="text" name="mem_lastname" value="<?php echo $row['mem_lastname'] ?>">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-md-3 control-label">Email:</label>
-                                            <div class="col-md-8">
-                                                <input class="form-control" type="email" name="mem_email" value="<?php echo $row['mem_email'] ?>">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-md-3 control-label">Telephone:</label>
-                                            <div class="col-md-8">
-                                                <input class="form-control" type="text" name="mem_tel" value="<?php echo $row['mem_tel'] ?>">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="col-md-3 control-label"></label>
-                                            <div class="col-md-8">
-                                                <input type="submit" class="btn btn-primary" value="Save Changes">
-                                                <span></span>
-                                                <input type="reset" class="btn btn-default" value="Cancel">
-                                            </div>
-                                        </div>
-                                        </form>
-
+                                        <!-- End Avatar Upload -->
+                                </div>
+                            </div>
+                            <div class="col-md-6 personal-info">
+                                <h5>Personal info</h5>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Username:</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control" type="text" name="mem_username" value="<?php echo htmlspecialchars($_SESSION['username'], ENT_QUOTES, 'UTF-8'); ?>" style="background-color: #d6d6d6;" readonly>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Firstname:</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control" type="text" name="mem_firstname" value="<?php echo htmlspecialchars($row['mem_firstname'], ENT_QUOTES, 'UTF-8'); ?>">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Lastname:</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control" type="text" name="mem_lastname" value="<?php echo htmlspecialchars($row['mem_lastname'], ENT_QUOTES, 'UTF-8'); ?>">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Email:</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control" type="email" name="mem_email" value="<?php echo htmlspecialchars($row['mem_email'], ENT_QUOTES, 'UTF-8'); ?>">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label">Telephone:</label>
+                                    <div class="col-md-9">
+                                        <input class="form-control" type="text" name="mem_tel" value="<?php echo htmlspecialchars($row['mem_tel'], ENT_QUOTES, 'UTF-8'); ?>">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-3 control-label"></label>
+                                    <div class="col-md-9">
+                                        <input type="submit" class="btn btn-primary" value="Save Changes">
+                                        <span></span>
+                                        <input type="reset" class="btn btn-default" value="Cancel">
+                                    </div>
+                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
+
                     <hr>
                 </div>
             </div>

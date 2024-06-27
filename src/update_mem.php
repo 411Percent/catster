@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (mysqli_stmt_execute($stmt)) {
         echo "Record updated successfully.<br>";
-        header("Location: members.php");
+        header("Location: form_edit_profile.php");
         exit();
     } else {
         echo "Error updating record: " . mysqli_stmt_error($stmt) . "<br>";
