@@ -12,7 +12,8 @@ if (!isset($_POST['order_total'], $_POST['mem_username'], $_POST['product'])) {
 }
 
 // Generate a unique order ID
-function generateOrderId($conn, $length = 10) {
+function generateOrderId($conn, $length = 10)
+{
     $characters = '0123456789';
     $charactersLength = strlen($characters);
     $orderId = 'OR';
@@ -36,7 +37,6 @@ VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 mysqli_stmt_bind_param($query, 'sssssdss', $order_id, $order_date, $order_tel, $order_address, $order_status, $_POST['order_total'], $order_note, $_POST['mem_username']);
 
 if (mysqli_stmt_execute($query)) {
-    $last_id = mysqli_insert_id($conn);
     foreach ($_POST['product'] as $product) {
         $product_id = $product['product_id'];
         $product_name = $product['product_name'];
@@ -44,18 +44,21 @@ if (mysqli_stmt_execute($query)) {
         $quantity = $product['quantity'];
         $sub_total = $product_price * $quantity;
 
+        // Insert into order_details
         $detail_query = mysqli_prepare($conn, "INSERT INTO order_details (order_id, product_id, product_name, product_price, quantity, sub_total) 
         VALUES (?, ?, ?, ?, ?, ?)");
         mysqli_stmt_bind_param($detail_query, 'ssssss', $order_id, $product_id, $product_name, $product_price, $quantity, $sub_total);
         mysqli_stmt_execute($detail_query);
+
+        // Update product_remain in products table
+        $stock_query = mysqli_prepare($conn, "UPDATE products SET product_remain = product_remain - ? WHERE product_id = ?");
+        mysqli_stmt_bind_param($stock_query, 'is', $quantity, $product_id);
+        mysqli_stmt_execute($stock_query);
     }
 
     // Clear the cart session and set order_id
     unset($_SESSION['cart']);
     $_SESSION['order_id'] = $order_id;
-
-    // If you have any shipping information, set it here. Otherwise, remove this line.
-    $_SESSION['shipping_info'] = ''; // Define as needed
 
     // Redirect to payment page
     header("location: payment.php");
@@ -67,4 +70,3 @@ if (mysqli_stmt_execute($query)) {
 }
 
 mysqli_close($conn);
-?>
