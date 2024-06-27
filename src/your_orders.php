@@ -112,25 +112,29 @@ if (isset($_SESSION['username'])) {
                                             </tr>
                                         </thead>
                                         <tbody class="table-group-divider">
-                                            <?php while ($order_row = $order_result->fetch_assoc()) : ?>
-                                                <?php
-                                                // SQL query to retrieve order details based on order ID
-                                                $order_details_sql = "SELECT * FROM order_details WHERE order_id = '{$order_row['order_id']}'";
-                                                $order_details_result = mysqli_query($conn, $order_details_sql);
-                                                ?>
+                                            <?php if ($order_result && $order_result->num_rows > 0) { ?>
+                                                <?php while ($order_row = $order_result->fetch_assoc()) : ?>
+                                                    <?php
+                                                    // SQL query to retrieve order details based on order ID
+                                                    $order_details_sql = "SELECT * FROM order_details WHERE order_id = '{$order_row['order_id']}'";
+                                                    $order_details_result = mysqli_query($conn, $order_details_sql);
+                                                    ?>
+                                                    <tr>
+                                                        <th scope="row"><?= htmlspecialchars($order_row['order_id'], ENT_QUOTES, 'UTF-8') ?></th>
+                                                        <td><?= htmlspecialchars($order_row['order_total'], ENT_QUOTES, 'UTF-8') ?></td>
+                                                        <td><?= htmlspecialchars($order_row['order_status'], ENT_QUOTES, 'UTF-8') ?></td>
+                                                        <td><a class="btn" href="your_invoice.php?order_id=<?= htmlspecialchars($order_row['order_id'], ENT_QUOTES, 'UTF-8'); ?>" style="background-color: #F88020; color: #FFFFFF;">Invoice</a></td>
+                                                    </tr>
+                                                <?php endwhile; ?>
+                                            <?php } else { ?>
                                                 <tr>
-                                                    <th scope="row"><?= $order_row['order_id'] ?></th>
-                                                    <td><?= $order_row['order_total'] ?></td>
-                                                    <td><?= $order_row['order_status'] ?></td>
-                                                    <td><a class="btn" href="your_invoice.php?order_id=<?php echo $order_row['order_id']; ?>" style="background-color: #F88020; color: #FFFFFF;">Invoice</a></td>
+                                                    <td colspan="4" class="text-center">ไม่มีประวัติการสั่งซื้อ</td>
                                                 </tr>
-                                            <?php endwhile; ?>
+                                            <?php } ?>
                                         </tbody>
                                     </table>
 
                                     <span class="badge rounded-pill" style="background-color: #F88020;">Success</span>
-                                    <span class="badge bg-danger-subtle border border-danger-subtle text-danger-emphasis rounded-pill">Danger</span>
-                                    <span class="badge bg-warning-subtle border border-warning-subtle text-warning-emphasis rounded-pill">Warning</span>
                                 </div>
                             </div>
                         </div>

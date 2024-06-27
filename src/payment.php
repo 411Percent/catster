@@ -62,6 +62,7 @@ $order = mysqli_fetch_assoc($result);
 <body style="background-color: #fff;">
     <?php include 'include/header.php'; ?>
     <div class="container mt-5">
+
         <div class="form-structor" style="margin-left: 30%; margin-bottom: 150;">
             <div class="signup">
                 <h2 class="form-title" id="signup"><span>or</span>Qr code</h2>
@@ -75,13 +76,43 @@ $order = mysqli_fetch_assoc($result);
             <div class="login slide-up">
                 <div class="center">
                     <h2 class="form-title" id="login"><span>or</span>Bank account</h2><br>
-                    <form action="confirm_payment.php" method="POST" enctype="multipart/form-data">
+                    <form action="insert_payment.php" method="POST" enctype="multipart/form-data">
                         <center><img src="images/noimage.png" style="width: 200px;"></center>
                         <input type="file" name="slip_payment" class="form-control" required>
                         <input type="hidden" name="order_id" value="<?php echo htmlspecialchars($order_id); ?>">
-                        <button class="submit-btn" type="submit">ยืนยันการชำระเงิน</button>
+                        <button class="submit-btn" type="submit" style="background-color: orange;">ยืนยันการชำระเงิน</button>
                     </form>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Button to Open the Modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+        Open Modal
+    </button>
+
+    <!-- The Modal -->
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Modal Heading</h4>
+                    <button type="button" class="close" data-dismiss="modal">Close</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    Modal body text goes here.
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
+                </div>
+
             </div>
         </div>
     </div>
@@ -127,6 +158,11 @@ $order = mysqli_fetch_assoc($result);
     <script src="lib/tempusdominus/js/moment.min.js"></script>
     <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
@@ -337,7 +373,7 @@ $order = mysqli_fetch_assoc($result);
                 }
 
                 .submit-btn {
-                    background-color: #6B92A4;
+                    background-color: rgba(0, 0, 0, 0.4);
                     color: rgba(256, 256, 256, 0.7);
                     border: 0;
                     border-radius: 15px;
