@@ -39,11 +39,27 @@ $sql = "UPDATE employees SET
         emp_picture = ?";
 
 // ตรวจสอบว่ามีการเปลี่ยนรหัสผ่านหรือไม่
-if (!empty($_POST['newPassword'])) {
+if (!empty($_POST['newPassword']) && !empty($_POST['oldPassword']) && !empty($_POST['cfPassword'])) {
+    $oldPassword = $_POST['oldPassword'];
     $newPassword = $_POST['newPassword'];
+    $cfPassword = $_POST['cfPassword'];
 
-    // เพิ่ม emp_password ใน SQL query ถ้ามีการเปลี่ยนรหัสผ่าน
-    $sql .= ", emp_password = ?";
+    // ตรวจสอบรหัสผ่านเดิม
+    $result = mysqli_query($conn, "SELECT emp_password FROM employees WHERE emp_username = '$emp_username'");
+    $row = mysqli_fetch_assoc($result);
+
+    if ($row && $row['emp_password'] == $oldPassword) {
+        if ($newPassword == $cfPassword) {
+            // เพิ่ม emp_password ใน SQL query ถ้ามีการเปลี่ยนรหัสผ่าน
+            $sql .= ", emp_password = ?";
+        } else {
+            echo "<script>alert('รหัสผ่านไม่ตรงกัน!'); window.history.back();</script>";
+            exit();
+        }
+    } else {
+        echo "<script>alert('รหัสผ่านเดิมไม่ถูกต้อง!'); window.history.back();</script>";
+        exit();
+    }
 }
 
 $sql .= " WHERE emp_username = ?";
@@ -51,7 +67,7 @@ $sql .= " WHERE emp_username = ?";
 $stmt = mysqli_prepare($conn, $sql);
 
 // ตรวจสอบการ bind parameters ตามเงื่อนไขการเปลี่ยนรหัสผ่าน
-if (!empty($_POST['newPassword'])) {
+if (!empty($_POST['newPassword']) && !empty($_POST['oldPassword']) && !empty($_POST['cfPassword'])) {
     mysqli_stmt_bind_param($stmt, "ssssssss", $emp_firstname, $emp_lastname, $emp_address, $emp_email, $emp_tel, $emp_picture, $newPassword, $emp_username);
 } else {
     mysqli_stmt_bind_param($stmt, "sssssss", $emp_firstname, $emp_lastname, $emp_address, $emp_email, $emp_tel, $emp_picture, $emp_username);
@@ -60,7 +76,7 @@ if (!empty($_POST['newPassword'])) {
 // Execute SQL statement
 if (mysqli_stmt_execute($stmt)) {
     echo "<script>alert('แก้ไขข้อมูลสำเร็จ!');</script>";
-    header("Location: form_edit_profile_admin.php");
+    echo "<script>window.location.href='form_edit_profile_admin.php';</script>";
     exit();
 } else {
     echo "Error updating record: " . mysqli_error($conn);
