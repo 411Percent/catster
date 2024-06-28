@@ -23,6 +23,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo "Email: $mem_email<br>";
     echo "Current Picture: $current_picture<br>";
 
+    // ตรวจสอบเบอร์โทรศัพท์
+    if (strlen($mem_tel) != 10
+    ) {
+        echo "<script>alert('เบอร์โทรศัพท์ต้องมีความยาว 10 ตัวอักษร'); window.history.back();</script>";
+        exit();
+    }
+
     // ตรวจสอบว่ามีการอัปโหลดไฟล์รูปหรือไม่
     if (isset($_FILES['mem_picture']) && $_FILES['mem_picture']['error'] === UPLOAD_ERR_OK) {
         $mem_picture = $_FILES['mem_picture']['name'];
@@ -57,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     mysqli_stmt_bind_param($stmt, "sssss", $mem_firstname, $mem_lastname, $mem_email, $mem_picture, $mem_username);
 
     if (mysqli_stmt_execute($stmt)) {
-        echo "Record updated successfully.<br>";
+        echo "<script>alert('แก้ไขข้อมูลสำเร็จ!'); window.history.back();</script>.";
         header("Location: form_edit_profile.php");
         exit();
     } else {

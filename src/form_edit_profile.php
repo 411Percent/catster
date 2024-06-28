@@ -143,8 +143,19 @@ $conn->close();
                                 <div class="form-group">
                                     <label class="col-md-3 control-label">Telephone:</label>
                                     <div class="col-md-9">
-                                        <input class="form-control" type="text" name="mem_tel" value="<?php echo htmlspecialchars($row['mem_tel'], ENT_QUOTES, 'UTF-8'); ?>">
+                                        <input class="form-control" type="text" name="mem_tel" id="mem_tel" value="<?php echo htmlspecialchars($row['mem_tel'], ENT_QUOTES, 'UTF-8'); ?>" oninput="validatePhoneNumber(this)">
                                     </div>
+                                    <script>
+                                        function validatePhoneNumber(input) {
+                                            // ลบอักขระที่ไม่ใช่ตัวเลขออก
+                                            input.value = input.value.replace(/\D/g, '');
+
+                                            // จำกัดจำนวน 10 ตัวอักษร
+                                            if (input.value.length > 10) {
+                                                input.value = input.value.slice(0, 10);
+                                            }
+                                        }
+                                    </script>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-3 control-label"></label>
