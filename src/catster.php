@@ -70,6 +70,7 @@
                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                     <h6 class="section-title text-center text-primary text-uppercase">Our Catster</h6>
                     <h1 class="mb-5">สมาชิกของ <span class="text-primary text-uppercase">แคทสเตอร์</span></h1>
+                    <a class="btn btn-primary py-3 px-5" href="">อุปการะแคทสเตอร์!</a>
                 </div>
                 <div class="row g-4">
                     <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">

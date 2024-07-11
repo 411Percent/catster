@@ -141,7 +141,7 @@ session_start();
                                 </div>
                             </div>
                         </div>
-                        <a class="btn btn-primary py-3 px-5 mt-2" href="">อุปการะแคทสเตอร์!</a>
+                        <a class="btn btn-primary py-3 px-5 mt-2" href="inform.php">แจ้งพบแมวจร</a>
                     </div>
                     <div class="col-lg-6">
                         <div class="row g-3">
