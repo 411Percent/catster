@@ -72,19 +72,24 @@
                     <h1 class="mb-5">แจ้งพบ <span class="text-primary text-uppercase">แมวจร</span></h1>
                 </div>
                 <div class="row g-4" style="justify-content: center;">
-                    <form class="form" style="border-style: solid;">
+                    <form class="form file-upload-form" style="border-style: solid;">
                         <h2>ข้อมูลของสัตว์</h2>
                         <div class="flex">
                             <label>
                                 <div class="coolinput">
-                                    <label for="mem_username" class="text">Username:</label>
-                                    <input type="text" placeholder="" name="mem_username" class="input" required="">
+                                    <label for="cat_gender" class="text">เพศ:</label>
+                                    <select name="cat_gender" class="input" required>
+                                        <option value="" disabled selected>ไม่ทราบเพศ</option>
+                                        <option value="male">ชาย</option>
+                                        <option value="female">หญิง</option>
+                                    </select>
                                 </div>
                             </label>
+
                             <label>
                                 <div class="coolinput">
-                                    <label for="input" class="text">Username:</label>
-                                    <input type="text" placeholder="" name="input" class="input" required="">
+                                    <label for="cat_color" class="text">สี:</label>
+                                    <input type="text" placeholder="" name="cat_color" class="input" required="">
                                 </div>
                             </label>
                         </div>
@@ -96,17 +101,54 @@
                         </label>
                         <label>
                             <div class="coolinput">
-                                <label for="" class="text">Description:</label>
+                                <label for="" class="text">รายละเอียด:</label>
                                 <textarea required="" rows="3" placeholder="" class="textarea"></textarea>
                             </div>
                         </label>
+                        <hr class="mt-3 mb-3">
+                        <label>
+                            <input id="file" type="file" />
+                        </label>
 
-                        <button class="fancy mt-5" href="#">
-                            <span class="top-key"></span>
-                            <span class="text">submit</span>
-                            <span class="bottom-key-1"></span>
-                            <span class="bottom-key-2"></span>
-                        </button>
+
+                        <hr class="mt-3 mb-3">
+                        <h2>ข้อมูลสำหรับติดต่อ</h2>
+                        <div class="flex">
+                            <label>
+                                <div class="coolinput">
+                                    <label for="mem_username" class="text">ชื่อ:</label>
+                                    <input type="text" placeholder="" name="mem_username" class="input" required="">
+                                </div>
+                            </label>
+                            <label>
+                                <div class="coolinput">
+                                    <label for="input" class="text">นามสกุล:</label>
+                                    <input type="text" placeholder="" name="input" class="input" required="">
+                                </div>
+                            </label>
+                        </div>
+                        <div class="flex">
+                            <label>
+                                <div class="coolinput">
+                                    <label for="mem_username" class="text">เบอร์โทรศัพท์:</label>
+                                    <input type="text" placeholder="" name="mem_username" class="input" required="">
+                                </div>
+                            </label>
+                            <label>
+                                <div class="coolinput">
+                                    <label for="input" class="text">อีเมล:</label>
+                                    <input type="text" placeholder="" name="input" class="input" required="">
+                                </div>
+                            </label>
+                        </div>
+
+                        <center><button class="learn-more mt-3">
+                            <span class="circle" aria-hidden="true">
+                                <span class="icon arrow"></span>
+                            </span>
+                            <span class="button-text">บันทึก</span>
+                        </button></center>
+
                     </form>
                 </div>
             </div>
@@ -201,9 +243,14 @@
         flex-direction: column;
         gap: 10px;
         max-width: 950px;
+        width: 100%;
+        /* ความกว้างเต็มรูปแบบ */
+        margin: 0 auto;
+        /* ตำแหน่งตรงกลาง */
         background-color: #fff;
         padding: 20px;
         border-radius: 10px;
+        border-color: #fff;
         position: relative;
     }
 
@@ -252,112 +299,93 @@
         color: green;
     }
 
-    .fancy {
-        background-color: transparent;
-        border: 2px solid #FFA559;
-        border-radius: 0px;
-        box-sizing: border-box;
-        color: #fff;
-        cursor: pointer;
-        display: inline-block;
-        font-weight: 390;
-        letter-spacing: 2px;
-        margin: 0;
-        outline: none;
-        overflow: visible;
-        padding: 8px 30px;
+    button {
         position: relative;
-        text-align: center;
+        display: inline-block;
+        cursor: pointer;
+        outline: none;
+        border: 0;
+        vertical-align: middle;
         text-decoration: none;
-        text-transform: none;
-        transition: all 0.3s ease-in-out;
-        user-select: none;
-        font-size: 13px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        background: transparent;
+        padding: 0;
+        font-size: inherit;
+        font-family: inherit;
     }
 
-    .fancy::before {
-        content: " ";
-        width: 1.7rem;
-        height: 2px;
-        background: #FFA559;
-        top: 50%;
-        left: 1.5em;
-        position: absolute;
-        transform: translateY(-50%);
-        transform: translateX(230%);
-        transform-origin: center;
-        transition: background 0.3s linear, width 0.3s linear;
+    button.learn-more {
+        width: 12rem;
+        height: auto;
     }
 
-    .fancy .text {
-        font-size: 1.125em;
-        line-height: 1.33333em;
-        padding-left: 2em;
+    button.learn-more .circle {
+        transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+        position: relative;
         display: block;
-        text-align: left;
-        transition: all 0.3s ease-in-out;
-        text-transform: lowercase;
-        text-decoration: none;
-        color: #FFA559;
-        transform: translateX(30%);
-    }
-
-    .fancy .top-key {
-        height: 2px;
-        width: 1.5625rem;
-        top: -2px;
-        left: 0.625rem;
-        position: absolute;
-        background: white;
-        transition: width 0.5s ease-out, left 0.3s ease-out;
-    }
-
-    .fancy .bottom-key-1 {
-        height: 2px;
-        width: 1.5625rem;
-        right: 1.875rem;
-        bottom: -2px;
-        position: absolute;
-        background: white;
-        transition: width 0.5s ease-out, right 0.3s ease-out;
-    }
-
-    .fancy .bottom-key-2 {
-        height: 2px;
-        width: 0.625rem;
-        right: 0.625rem;
-        bottom: -2px;
-        position: absolute;
-        background: white;
-        transition: width 0.5s ease-out, right 0.3s ease-out;
-    }
-
-    .fancy:hover {
-        color: white;
+        margin: 0;
+        width: 3rem;
+        height: 3rem;
         background: #FFA559;
+        border-radius: 1.625rem;
     }
 
-    .fancy:hover::before {
-        width: 1.5rem;
-        background: white;
+    button.learn-more .circle .icon {
+        transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        background: #fff;
     }
 
-    .fancy:hover .text {
-        color: white;
-        padding-left: 1.5em;
+    button.learn-more .circle .icon.arrow {
+        transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+        left: 0.625rem;
+        width: 1.125rem;
+        height: 0.125rem;
+        background: none;
     }
 
-    .fancy:hover .top-key {
-        left: -2px;
-        width: 0px;
+    button.learn-more .circle .icon.arrow::before {
+        position: absolute;
+        content: "";
+        top: -0.29rem;
+        right: 0.0625rem;
+        width: 0.625rem;
+        height: 0.625rem;
+        border-top: 0.125rem solid #fff;
+        border-right: 0.125rem solid #fff;
+        transform: rotate(45deg);
     }
 
-    .fancy:hover .bottom-key-1,
-    .fancy:hover .bottom-key-2 {
+    button.learn-more .button-text {
+        transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+        position: absolute;
+        top: 0;
+        left: 0;
         right: 0;
-        width: 0;
+        bottom: 0;
+        padding: 0.75rem 0;
+        margin: 0 0 0 1.85rem;
+        color: #282936;
+        font-weight: 700;
+        line-height: 1.6;
+        text-align: center;
+        text-transform: uppercase;
     }
+
+    button:hover .circle {
+        width: 100%;
+    }
+
+    button:hover .circle .icon.arrow {
+        background: #fff;
+        transform: translate(1rem, 0);
+    }
+
+    button:hover .button-text {
+        color: #fff;
+    }
+
+    
 </style>
