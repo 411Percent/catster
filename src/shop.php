@@ -40,7 +40,7 @@ $products = mysqli_fetch_all($product_result, MYSQLI_ASSOC);
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/styles.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/5f1b7c0a83.js" crossorigin="anonymous"></script>
 </head>
 
