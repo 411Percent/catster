@@ -1,9 +1,22 @@
+<?php
+include 'condb.php';
+session_start();
+
+$username = $_SESSION['username'];
+$sql = "SELECT * FROM members WHERE mem_username = ?";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param('s', $username);
+$stmt->execute();
+$result = $stmt->get_result();
+$member = $result->fetch_assoc();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>Hotelier - Hotel HTML Template</title>
+    <title>Catster - แจ้งพบแมวจร</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -72,83 +85,56 @@
                     <h1 class="mb-5">แจ้งพบ <span class="text-primary text-uppercase">แมวจร</span></h1>
                 </div>
                 <div class="row g-4" style="justify-content: center;">
-                    <form class="form file-upload-form" style="border-style: solid;">
-                        <h2>ข้อมูลของสัตว์</h2>
-                        <div class="flex">
-                            <label>
-                                <div class="coolinput">
-                                    <label for="cat_gender" class="text">เพศ:</label>
-                                    <select name="cat_gender" class="input" required>
-                                        <option value="" disabled selected>ไม่ทราบเพศ</option>
-                                        <option value="male">ชาย</option>
-                                        <option value="female">หญิง</option>
-                                    </select>
-                                </div>
-                            </label>
-
-                            <label>
-                                <div class="coolinput">
-                                    <label for="cat_color" class="text">สี:</label>
-                                    <input type="text" placeholder="" name="cat_color" class="input" required="">
-                                </div>
-                            </label>
-                        </div>
+                    <form class="form file-upload-form" method="POST" action="insert_inform.php" enctype="multipart/form-data">
+                        <h2>ข้อมูลการแจ้ง</h2>
                         <label>
-                            <div class="coolinput">
-                                <label for="email" class="text">Email:</label>
-                                <input type="email" placeholder="" name="email" class="input" required="">
-                            </div>
+                            <input id="file" type="file" name="inform_image" />
                         </label>
                         <label>
                             <div class="coolinput">
-                                <label for="" class="text">รายละเอียด:</label>
-                                <textarea required="" rows="3" placeholder="" class="textarea"></textarea>
+                                <label for="inform_desc" class="text">รายละเอียด:</label>
+                                <textarea name="inform_desc" required="" rows="3" placeholder="" class="textarea"></textarea>
                             </div>
                         </label>
-                        <hr class="mt-3 mb-3">
-                        <label>
-                            <input id="file" type="file" />
-                        </label>
-
 
                         <hr class="mt-3 mb-3">
                         <h2>ข้อมูลสำหรับติดต่อ</h2>
                         <div class="flex">
                             <label>
                                 <div class="coolinput">
-                                    <label for="mem_username" class="text">ชื่อ:</label>
-                                    <input type="text" placeholder="" name="mem_username" class="input" required="">
+                                    <label for="mem_firstname" class="text">ชื่อ:</label>
+                                    <input type="text" placeholder="" name="mem_firstname" class="input" value="<?php echo $member['mem_firstname'] ?>" required="">
                                 </div>
                             </label>
                             <label>
                                 <div class="coolinput">
-                                    <label for="input" class="text">นามสกุล:</label>
-                                    <input type="text" placeholder="" name="input" class="input" required="">
+                                    <label for="mem_lastname" class="text">นามสกุล:</label>
+                                    <input type="text" placeholder="" name="mem_lastname" class="input" value="<?php echo $member['mem_lastname'] ?>" required="">
                                 </div>
                             </label>
                         </div>
                         <div class="flex">
                             <label>
                                 <div class="coolinput">
-                                    <label for="mem_username" class="text">เบอร์โทรศัพท์:</label>
-                                    <input type="text" placeholder="" name="mem_username" class="input" required="">
+                                    <label for="mem_tel" class="text">เบอร์โทรศัพท์:</label>
+                                    <input type="text" placeholder="" name="mem_tel" class="input" value="<?php echo $member['mem_tel'] ?>" required="">
                                 </div>
                             </label>
                             <label>
                                 <div class="coolinput">
-                                    <label for="input" class="text">อีเมล:</label>
-                                    <input type="text" placeholder="" name="input" class="input" required="">
+                                    <label for="mem_email" class="text">อีเมล:</label>
+                                    <input type="text" placeholder="" name="mem_email" class="input" value="<?php echo $member['mem_email'] ?>" required="">
                                 </div>
                             </label>
                         </div>
+                        <input type="hidden" name="mem_username" value="<?php echo $member['mem_username']; ?>" />
 
-                        <center><button class="learn-more mt-3">
-                            <span class="circle" aria-hidden="true">
-                                <span class="icon arrow"></span>
-                            </span>
-                            <span class="button-text">บันทึก</span>
-                        </button></center>
-
+                        <center><button class="learn-more mt-3" type="submit">
+                                <span class="circle" aria-hidden="true">
+                                    <span class="icon arrow"></span>
+                                </span>
+                                <span class="button-text">บันทึก</span>
+                            </button></center>
                     </form>
                 </div>
             </div>
@@ -386,6 +372,4 @@
     button:hover .button-text {
         color: #fff;
     }
-
-    
 </style>
